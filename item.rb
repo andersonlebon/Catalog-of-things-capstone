@@ -6,7 +6,7 @@ require_relative 'corrector'
 
 require 'date'
 
-class Person
+class Item
   attr_accessor :name, :genre, :author, :publish_date, :archived
 
   def initialize(_name, _age, _parent_permission, id)
