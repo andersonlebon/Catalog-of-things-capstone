@@ -1,0 +1,16 @@
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 41
+Metrics/MethodLength:
+  Max: 1000000
+Metrics/CyclomaticComplexity:
+  Max: 1000000
+Metrics/AbcSize:
+  Max: 1000000
+Metrics/ModuleLength:
+  Max: 1000000
+Style/GlobalVars:
+  Enabled: false

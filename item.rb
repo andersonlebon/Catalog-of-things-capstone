@@ -2,11 +2,10 @@
 
 require_relative 'corrector'
 
-# Create Item class in a separate .rb file.
-
 require 'date'
 
-class Person
+# Create Item class in a separate .rb file.
+class Items
   attr_accessor :name, :genre, :author, :publish_date, :archived
 
   def initialize(_name, _age, _parent_permission, id)
@@ -28,6 +27,6 @@ class Person
   end
 
   def self.move_to_archive?
-    archived = true if can_be_archived?
+    @archived = true if can_be_archived?
   end
 end
