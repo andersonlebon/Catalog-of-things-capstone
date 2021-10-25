@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
-require_relative 'corrector'
+# Create Item class in a separate .rb file.
 
 require 'date'
 
-# Create Item class in a separate .rb file.
 class Item
-  attr_accessor :name, :genre, :author, :publish_date, :archived
+  attr_accessor :name, :genre, :author, :publish_date, :archived :label
 
-  def initialize(_name, _age, _parent_permission, id)
+  def initialize(name:, genre:, author:, source:, label:, publish_date:, id)
     @id = id
+    @name = name
     @genre = genre
     @author = author
     @source = source
+    @label = label
     @publish_date = Date.new(publish_date)
-    @archived = archived
+    @archived = false
   end
 
   # in the Item class should return true if published_date is older than 10 years
@@ -27,6 +28,6 @@ class Item
   end
 
   def self.move_to_archive?
-    @archived = true if can_be_archived?
+    archived = true if can_be_archived?
   end
 end
