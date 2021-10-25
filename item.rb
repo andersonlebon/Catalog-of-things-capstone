@@ -5,7 +5,7 @@ require_relative 'corrector'
 require 'date'
 
 # Create Item class in a separate .rb file.
-class Items
+class Item
   attr_accessor :name, :genre, :author, :publish_date, :archived
 
   def initialize(_name, _age, _parent_permission, id)
