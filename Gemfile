@@ -2,6 +2,6 @@
 
 source "https://rubygems.org"
 
-git_source(:github) { |repo_name| "https://github.com/andersonlebon/Catalog-of-things-capstone" }
+git_source(:github) { "https://github.com/andersonlebon/Catalog-of-things-capstone" }
 
 # gem "rails"
