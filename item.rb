@@ -14,7 +14,7 @@ class Person
     @genre = genre
     @author = author
     @source = source
-    @publish_date = publish_date
+    @publish_date = Date.new(publish_date)
     @archived = archived
   end
 
@@ -22,10 +22,12 @@ class Person
   def can_be_archived?
     today = Date.today
     total = today.year - publish_date.year
-    total -= 1 if today < @publish_date + total.year
-
     return true if total > 10
 
     false
+  end
+
+  def self.move_to_archive?
+    archived = true if can_be_archived?
   end
 end
