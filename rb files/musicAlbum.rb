@@ -1,7 +1,8 @@
 require '../item'
 
-class MusicAlbum 
-    def initialize(_name, _age, _parent_permission, id)
-        
+class MusicAlbum < item
+    def initialize(name:, genre:, author:, source:, label:, publish_date:, id:, on_spotify:)
+        super(name, genre, author, source, label, publish_date, id)
+        @on_spotify = false 
     end
 end
