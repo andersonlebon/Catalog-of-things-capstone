@@ -1,4 +1,3 @@
-require '../item'
 
 class  Genre
     attr_accessor :name, id:
@@ -9,7 +8,7 @@ class  Genre
         @items = []
     end
 
-    def add_item
-        @items <<
+    def add_item(item)
+        @items << item
     end
 end
