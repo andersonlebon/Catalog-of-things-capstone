@@ -14,7 +14,7 @@ class Item
     @author = author
     @source = source
     @label = label
-    @publish_date = Date.new(publish_date)
+    @publish_date = Date.parse(publish_date)
     @archived = false
   end
 

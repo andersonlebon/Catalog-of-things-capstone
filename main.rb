@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-def welcome
-  puts "\n\n"
-  puts decorate('WELCOME TO CATALOG APP')
-  puts decorate('Please select one of the options bellow')
-end
+require_relative 'rb files/handler'
 
 def decorate(message)
   puts '=' * (message.length + 4)
@@ -14,7 +10,9 @@ def decorate(message)
   puts '=' * (message.length + 4)
 end
 
-def options
+def options(string, _handler)
+  puts(string)
+  puts('')
   message = [
     '1.=> List all books',
     '2.=> List all music albums',
@@ -27,18 +25,22 @@ def options
     '9.=> Add a book',
     '10.=> Add a music album',
     '11.=> Add a movie',
-    '12.=> Add a game'
+    '12.=> Add a game',
+    '13.=> Add a author',
+    '14.=> Exit'
   ]
 
+  puts('')
   puts message
+  puts('')
+  entry = gets.chomp
+  return Handler.do(entry)
 end
 
 def main
-  books = []
-  games = []
-  songs = []
-  welcome
-  options
+  string = 'WELCOME TO CATALOG APP'
+  handler = Handler.new
+  string = options(string, handler) while string != 'bye'
 end
 
 main
