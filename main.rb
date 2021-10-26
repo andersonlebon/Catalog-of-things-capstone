@@ -44,6 +44,7 @@ def main
     store = App.new
 
     store.add_genre
+    store.add_music
     welcome
     options
 end

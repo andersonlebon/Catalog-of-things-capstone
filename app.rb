@@ -17,7 +17,7 @@ class App
     def  add_genre
         genre = Creator.genre
         @genres<< genre
-        save_file("genre", [genre.get_h]) 
+        save_file("genres", genre.get_h) 
 
     end
 
@@ -29,8 +29,10 @@ class App
         @books<< book       
     end
 
-    def  add_music(movie)
-        @movies<< movie        
+    def  add_music
+        new_album = Creator.musicAl
+        @musicAlbum << new_album
+        save_file("musicAlbum", [new_album.get_h]) 
     end
 
     def  add_author(author)
