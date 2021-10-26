@@ -1,19 +1,15 @@
 # require './main'
 require 'json'
 
-def createFiles
-    FileUtils.touch("./json/genres.json")
-    FileUtils.touch("./json/labels.json")
-    FileUtils.touch("./json/authors.json")
-    FileUtils.touch("./json/soures.json")
-    FileUtils.touch("./json/books.json")
-    FileUtils.touch("./json/musicAlbum.json")
-    FileUtils.touch("./json/movies.json")
-    FileUtils.touch("./json/games.json")
+def createFiles(file_names)
+    file_names.each do |file_name| 
+        FileUtils.touch("./json/#{file_name}.json")
+        File.write("./json/#{file_name}.json", JSON.dump([]))
+    end
 end
 
 def save_file(file_name, content)
-    data = JSON.parse(File.read("./json/#{file_name}.json"))
+    data = JSON.parse(File.read("./json/#{file_name}.json")) 
     File.write("./json/#{file_name}.json", JSON.dump(data.push content))
 end
 

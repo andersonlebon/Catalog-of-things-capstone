@@ -50,7 +50,7 @@ def main
           read_file("genres")              
         when "10"
             store.add_music             
-            store.add_genre
+            # store.add_genre
         else
             return
         end
