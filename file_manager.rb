@@ -1,6 +1,6 @@
-require './main'
+# require './main'
 
-def createFile
+def createFiles
     FileUtils.touch("./json/genres.json")
     FileUtils.touch("./json/labels.json")
     FileUtils.touch("./json/authors.json")

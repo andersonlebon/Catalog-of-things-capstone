@@ -3,7 +3,7 @@
 require 'fileutils'
 require 'json'
 require './app'
-require "file_namager"
+require "./file_manager"
 
 
 def welcome
@@ -40,6 +40,7 @@ def options
 end
 
 def main
+    createFiles
     store = App.new
     welcome
     options

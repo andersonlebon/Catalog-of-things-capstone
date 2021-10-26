@@ -21,7 +21,7 @@ class App
     end
 
     def  self.add_book(book)
-        @books<< book        
+        @books<< book       
     end
 
     def  self.add_movie(movie)

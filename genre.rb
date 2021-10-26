@@ -12,4 +12,8 @@ class Genre
   def add_item(item)
     @items << item
   end
+
+  def get_h
+    {name: @name, id: @id, items: @items}
+  end
 end
