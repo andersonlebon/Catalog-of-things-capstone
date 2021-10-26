@@ -40,17 +40,19 @@ def options
 end
 
 def main
-    createFiles
+    createFiles(["genres", "musicAlbum"])
     welcome
     options
     store = App.new
     loop do
         case gets.chomp
         when "5"
-          read_file("genres")              
+            puts "hello"
+          data = read_file("genres")
+          puts data
         when "10"
             store.add_music             
-            # store.add_genre
+            store.add_genre
         else
             return
         end
