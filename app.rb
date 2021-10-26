@@ -15,15 +15,19 @@ class App
         @genres<< genre        
     end
 
-    def  self.add_genre(genre)
-        @genres<< genre        
+    def  self.add_source(source)
+        @sources<< source        
     end
 
-    def  self.add_genre(genre)
-        @genres<< genre        
+    def  self.add_book(book)
+        @books<< book        
     end
 
-    def  self.add_genre(genre)
-        @genres<< genre        
+    def  self.add_movie(movie)
+        @movies<< movie        
+    end
+
+    def  self.add_author(author)
+        @authors<< author        
     end
 end
