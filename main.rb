@@ -34,6 +34,9 @@ def options
 end
 
 def main
+  books = []
+  games = []
+  songs = []
   welcome
   options
 end
