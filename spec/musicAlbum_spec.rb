@@ -2,17 +2,24 @@ require './musicAlbum'
 
 
 describe MusicAlbum do
-    context "When MusicAlbum is initialised" do
-       it "Should return an istance of the Class musicAlbum" do
-        new_music_album = MusicAlbum.new("2020-10-10", on_spotify: true)
-        expect(new_music_album).to be_an_instance_of MusicAlbum 
-       end
+    context "When MusicAlbum is initialised with on_spotity to true" do
+        new_music_album = MusicAlbum.new("2010-10-10", on_spotify: true)
+        it "Should return an istance of the Class musicAlbum" do
+            expect(new_music_album).to be_an_instance_of MusicAlbum 
+        end
+        it "Should Return false" do
+            expect(new_music_album.can_be_archived?).to be true
+        end      
     end
 
     context "When Music is initialise with on_spotity to false" do
-       it "Should return an istance of the Class musicAlbum" do
-        new_music_album = MusicAlbum.new("2020-10-10", on_spotify: true)
-        expect(new_music_album).to be_an_instance_of MusicAlbum 
-       end
+        new_music_album = MusicAlbum.new("2010-10-10", on_spotify: false)
+        it "Should return an istance of the Class musicAlbum" do
+            expect(new_music_album).to be_an_instance_of MusicAlbum 
+        end
+
+        it "Should Return true" do
+            expect(new_music_album.can_be_archived?).to be false
+        end      
     end
 end
