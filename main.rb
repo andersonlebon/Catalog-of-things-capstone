@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'fileutils'
+require 'json'
+
+
 def welcome
   puts "\n\n"
   puts decorate('WELCOME TO CATALOG APP')
@@ -38,4 +42,15 @@ def main
   options
 end
 
-main
+
+
+def CreateFile (file_name)
+    FileUtils.touch(file_name)
+end
+
+
+FileUtils.touch("caleb.json")
+# puts File.open("caleb.json")
+# main
+File.write("caleb.json", JSON.dump({books: ["hello"], authors: ["autors2"]}))
+puts JSON.parse(File.read("caleb.json")).class
