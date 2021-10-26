@@ -11,8 +11,21 @@ class Author
     @items = []
   end
 
-  def self.add_item(item)
+  def add_item(item)
     @items.push(item)
     item.author = self
+  end
+
+  def to_json(*_args)
+    hash = { id: @id, first_name: @first_name, last_name: @last_name }
+    JSON.generate(hash)
+  end
+
+  def completename
+    "#{@first_name} #{@last_name}"
+  end
+
+  def display
+    puts("#{@id})  first name: #{@first_name} , last name: #{@last_name} id: #{@id}")
   end
 end

@@ -7,7 +7,7 @@ require 'date'
 class Item
   attr_accessor :name, :genre, :author, :publish_date, :archived, :label
 
-  def initialize(name:, genre:, author:, source:, label:, publish_date:, id:)
+  def initialize(name, genre, author, source, label, publish_date, id)
     @id = id
     @name = name
     @genre = genre
@@ -16,6 +16,8 @@ class Item
     @label = label
     @publish_date = Date.parse(publish_date)
     @archived = false
+
+    @author.add_item(self)
   end
 
   # in the Item class should return true if published_date is older than 10 years

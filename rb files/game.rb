@@ -7,7 +7,7 @@ class Game < Item
   require 'json'
   attr_accessor :multiplayer, :last_played_at
 
-  def initialize(proto:, multiplayer:, last_played_at:)
+  def initialize(proto, multiplayer, last_played_at)
     name = proto['name']
     id = proto['id']
     publish_date = proto['publish_date']
@@ -21,14 +21,14 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
-  def self.to_json(*_args)
-    hash = { name: @name, genre: @genre, author: @author, source: @source, label: @label, publish_date: @publish_date,
+  def to_json(*_args)
+    hash = { name: @name, genre: @genre, author: @author.id, source: @source, label: @label, publish_date: @publish_date,
              id: @id, multiplayer: @multiplayer, last_played_at: @last_played_at }
     JSON.generate(hash)
   end
 
-  def display(index)
-    puts("#{index})  name: #{name} , genre: #{genre}, author: #{author}, source: #{source}, label: #{label}, publish date: #{publish_date} id: #{index}")
+  def display
+    puts("#{@id})  name: #{@name} , genre: #{@genre}, author: #{@author.completename}, source: #{@source}, label: #{@label}, publish date: #{@publish_date}, last played: #{@last_played_at} id: #{@id}")
   end
 
   def self.move_to_archive?

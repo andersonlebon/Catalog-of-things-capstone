@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+require_relative 'console'
 require_relative 'game'
 require_relative 'author'
+require_relative 'filehandler'
 
 class Handler
+  include FileHandler
   attr_accessor :games, :authors, :genres, :sources, :labels
 
   def initialize
@@ -15,14 +18,28 @@ class Handler
   end
 
   def cr_a_item(id)
+    year = '0'
+    month = '0'
+    day = '0'
     puts('insert a name: ')
     name = gets.chomp
-    puts('insert the published year (in numbers)')
-    year = gets.chomp
-    puts('insert the published month (in numbers)')
-    month = gets.chomp
-    puts('insert the published day (in numbers)')
-    day = gets.chomp
+    while year.to_i <= 1
+      puts('insert the published year (in numbers)')
+      year = gets.chomp
+    end
+    while month.to_i >= 13 || month.to_i <= 0
+      puts('insert the published month (in numbers)')
+      month = gets.chomp
+    end
+    max = days_in_month(year.to_i, month.to_i)
+    while day.to_i <= 1 || day.to_i > max
+      puts("insert the published day (in numbers, the max is #{max})")
+      day = gets.chomp
+    end
+    puts('please select an author of the list')
+    display_array(@authors)
+    pick = gets.chomp.to_i
+    author = @authors[pick]
     publish_date = "#{year}-#{month}-#{day}"
     {
       'name' => name,
@@ -36,10 +53,13 @@ class Handler
   end
 
   def cr_a_game
+    year = '0'
+    month = '0'
+    day = '0'
     proto = cr_a_item(@games.length)
     multiplayer = 'agegraegr'
     while multiplayer != 'Y' && multiplayer != 'N' && multiplayer != 'y' && multiplayer != 'n'
-      puts('invalid option, please select Y or N') if permission != 'agegraegr'
+      puts('invalid option, please select Y or N') if multiplayer != 'agegraegr'
       puts('is multiplayer (Y/N)?: ')
       multiplayer = gets.chomp
     end
@@ -48,15 +68,23 @@ class Handler
                   else
                     false
                   end
-    puts('insert the year were the game was last played (in numbers)')
-    year = gets.chomp
-    puts('insert the month were the game was last played (in numbers)')
-    month = gets.chomp
-    puts('insert the day were the game was last played (in numbers)')
-    day = gets.chomp
+    while year.to_i <= 1
+      puts('insert the year were the game was last played (in numbers)')
+      year = gets.chomp
+    end
+    while month.to_i >= 13 || month.to_i <= 0
+      puts('insert the month were the game was last played (in numbers)')
+      month = gets.chomp
+    end
+    max = days_in_month(year.to_i, month.to_i)
+    while day.to_i <= 1 || day.to_i > max
+      puts("insert the day were the game was last played (in numbers, the max is #{max})")
+      day = gets.chomp
+    end
     last_played_at = "#{year}-#{month}-#{day}"
     new_game = Game.new(proto, multiplayer, last_played_at)
     @games.push(new_game)
+    'game created succesfully'
   end
 
   def cr_a_author
@@ -68,16 +96,75 @@ class Handler
 
     new_author = Author.new(id, first_name, last_name)
     @authors.push(new_author)
+    'Author created succesfully'
+  end
+
+  def list_authors
+    if @authors.length.positive?
+      puts('this is the list of authors')
+      puts('')
+      display_array(@authors)
+    else
+      puts('currently there are not authors created')
+    end
+    Console.continue_story
+  end
+
+  def list_games
+    if @games.length.positive?
+      puts('this is the list of games')
+      puts('')
+      display_array(@games)
+    else
+      puts('currently there are not games created')
+    end
+    Console.continue_story
+  end
+
+  def go_back
+    puts('There should be atleast one author, label, genre, and source')
+    Console.continue_story
+    'There should be atleast one author, label, genre, and source'
+  end
+
+  def enough_categorys
+    authors.length >= 1
+  end
+
+  def display_array(array)
+    array.each(&:display)
+  end
+
+  def days_in_month(year, month)
+    Date.new(year, month, -1).day
+  end
+
+  def exit
+    save_in_file('authors', @authors)
+    save_in_file('labels', @labels)
+    save_in_file('sources', @sources)
+    save_in_file('genres', @genres)
+    save_in_file('games', @games)
+    'bye'
   end
 
   def do(option)
+    Console.clean
     case option
+    when '4'
+      list_games
+    when '7'
+      list_authors
     when '12'
-      cr_a_game
-      'game created succesfully'
+      if enough_categorys
+        cr_a_game
+      else
+        go_back
+      end
     when '13'
       cr_a_author
-      'author created succesfully'
+    when '14'
+      exit
     end
   end
 end

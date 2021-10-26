@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'io/console'
 # usefull functions to control the console
 module Console
   def self.continue_story

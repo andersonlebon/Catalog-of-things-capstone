@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'rb files/handler'
+require_relative 'rb files/console'
 
 def decorate(message)
   puts '=' * (message.length + 4)
@@ -11,8 +12,8 @@ def decorate(message)
 end
 
 def options(string, handler)
+  Console.clean
   puts(string)
-  puts('')
   message = [
     '1.=> List all books',
     '2.=> List all music albums',
@@ -40,6 +41,7 @@ end
 def main
   string = 'WELCOME TO CATALOG APP'
   handler = Handler.new
+  handler.load_all
   string = options(string, handler) while string != 'bye'
 end
 
