@@ -10,7 +10,7 @@ def decorate(message)
   puts '=' * (message.length + 4)
 end
 
-def options(string, _handler)
+def options(string, handler)
   puts(string)
   puts('')
   message = [
@@ -34,7 +34,7 @@ def options(string, _handler)
   puts message
   puts('')
   entry = gets.chomp
-  return Handler.do(entry)
+  handler.do(entry)
 end
 
 def main

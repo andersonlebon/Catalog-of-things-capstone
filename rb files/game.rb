@@ -9,12 +9,12 @@ class Game < Item
 
   def initialize(proto:, multiplayer:, last_played_at:)
     name = proto['name']
-    author = proto['author']
     id = proto['id']
     publish_date = proto['publish_date']
-    source = 'TBA'
-    label = 'TBA'
-    genre = 'TBA'
+    author = proto['author']
+    source = proto['source']
+    label = proto['label']
+    genre = proto['genre']
 
     super(name, genre, author, source, label, publish_date, id)
     @multiplayer = multiplayer

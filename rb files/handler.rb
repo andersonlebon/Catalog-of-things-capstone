@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'game'
+require_relative 'author'
 
 class Handler
   attr_accessor :games, :authors, :genres, :sources, :labels
@@ -34,8 +35,8 @@ class Handler
     }
   end
 
-  def self.cr_a_game
-    proto = cr_a_item(games.length)
+  def cr_a_game
+    proto = cr_a_item(@games.length)
     multiplayer = 'agegraegr'
     while multiplayer != 'Y' && multiplayer != 'N' && multiplayer != 'y' && multiplayer != 'n'
       puts('invalid option, please select Y or N') if permission != 'agegraegr'
@@ -58,12 +59,25 @@ class Handler
     @games.push(new_game)
   end
 
-  def self.do(option)
+  def cr_a_author
+    id = @authors.length
+    puts('insert the first name of the author')
+    first_name = gets.chomp
+    puts('insert the last name of the author')
+    last_name = gets.chomp
+
+    new_author = Author.new(id, first_name, last_name)
+    @authors.push(new_author)
+  end
+
+  def do(option)
     case option
-    when 12
-      self.cr_a_game
-      return ("game created succesfully")
-    when 13
-      return ("author created succesfully")
+    when '12'
+      cr_a_game
+      'game created succesfully'
+    when '13'
+      cr_a_author
+      'author created succesfully'
+    end
   end
 end
