@@ -4,7 +4,7 @@ require './musicAlbum'
 describe MusicAlbum do
     context "When MusicAlbum is initialised with on_spotity to true" do
         new_music_album = MusicAlbum.new("2010-10-10", on_spotify: true)
-        it "Should return an istance of the Class musicAlbum" do
+        it "Should return an instance of the Class musicAlbum" do
             expect(new_music_album).to be_an_instance_of MusicAlbum 
         end
         it "Should Return false" do
@@ -14,7 +14,7 @@ describe MusicAlbum do
 
     context "When Music is initialise with on_spotity to false" do
         new_music_album = MusicAlbum.new("2010-10-10", on_spotify: false)
-        it "Should return an istance of the Class musicAlbum" do
+        it "Should return an instance of the Class musicAlbum" do
             expect(new_music_album).to be_an_instance_of MusicAlbum 
         end
 
