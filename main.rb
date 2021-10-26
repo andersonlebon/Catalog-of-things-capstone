@@ -41,12 +41,22 @@ end
 
 def main
     createFiles
-    store = App.new
-
-    store.add_genre
-    store.add_music
     welcome
     options
+    store = App.new
+    loop do
+        case gets.chomp
+        when "5"
+          read_file("genres")              
+        when "10"
+            store.add_music             
+            store.add_genre
+        else
+            return
+        end
+    end
+    
+  
 end
 
 
