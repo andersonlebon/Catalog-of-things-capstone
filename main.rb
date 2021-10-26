@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-def welcome()
-    puts "\n\n"
-    puts decorate("WELCOME TO CATALOG APP")
-    puts decorate("Please select one of the options bellow")
-end 
+def welcome
+  puts "\n\n"
+  puts decorate('WELCOME TO CATALOG APP')
+  puts decorate('Please select one of the options bellow')
+end
 
 def decorate(message)
-    puts "="*(message.length + 4)
-    puts "|"+" "*(message.length + 2)+ "|"
-    puts "| "+ message+ " |"
-    puts "|"+" "*(message.length + 2)+ "|"
-    puts "="*(message.length + 4)
+  puts '=' * (message.length + 4)
+  puts "|#{' ' * (message.length + 2)}|"
+  puts "| #{message} |"
+  puts "|#{' ' * (message.length + 2)}|"
+  puts '=' * (message.length + 4)
 end
 
 def options
