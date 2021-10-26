@@ -32,7 +32,7 @@ class App
     def  add_music
         new_album = Creator.musicAl
         @musicAlbum << new_album
-        save_file("musicAlbum", [new_album.get_h]) 
+        save_file("musicAlbum", new_album.get_h) 
     end
 
     def  add_author(author)

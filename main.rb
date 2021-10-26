@@ -46,10 +46,12 @@ def main
     store = App.new
     loop do
         case gets.chomp
+        when "2"
+            musicAlbums = read_file("musicAlbum")
+            musicAlbums.each {|album| puts "Published_date: #{album["published_date"]}" }
         when "5"
-            puts "hello"
-          data = read_file("genres")
-          puts data
+          genres = read_file("genres")
+          genres.each {|genre| puts "[ #{genre["name"].upcase} ]"}
         when "10"
             store.add_music             
             store.add_genre
