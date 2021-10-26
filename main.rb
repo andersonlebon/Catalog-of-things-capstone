@@ -42,6 +42,8 @@ end
 def main
     createFiles
     store = App.new
+
+    store.add_genre
     welcome
     options
 end

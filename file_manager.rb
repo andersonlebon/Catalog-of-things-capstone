@@ -2,13 +2,13 @@
 
 def createFiles
     FileUtils.touch("./json/genres.json")
-    FileUtils.touch("./json/labels.json")
-    FileUtils.touch("./json/authors.json")
-    FileUtils.touch("./json/soures.json")
-    FileUtils.touch("./json/books.json")
-    FileUtils.touch("./json/musicAlbum.json")
-    FileUtils.touch("./json/movies.json")
-    FileUtils.touch("./json/games.json")
+    # FileUtils.touch("./json/labels.json")
+    # FileUtils.touch("./json/authors.json")
+    # FileUtils.touch("./json/soures.json")
+    # FileUtils.touch("./json/books.json")
+    # FileUtils.touch("./json/musicAlbum.json")
+    # FileUtils.touch("./json/movies.json")
+    # FileUtils.touch("./json/games.json")
 end
 
 def save_file(file_name, content)

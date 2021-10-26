@@ -1,4 +1,4 @@
-require 'genre'
+# require 'genre'
 
 class Creator
     def self.genre

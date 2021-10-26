@@ -1,5 +1,6 @@
 require_relative 'genre'
 require_relative 'musicAlbum'
+require_relative 'creator'
 
 class App
     def initialize
@@ -13,24 +14,26 @@ class App
         @games = []
     end
 
-    def  self.add_genre
-        @genres<< Creator.genre  
+    def  add_genre
+        genre = Creator.genre
+        @genres<< genre
+        save_file("genre", [genre.get_h]) 
 
     end
 
-    def  self.add_source(source)
+    def  add_source(source)
         @sources<< source        
     end
 
-    def  self.add_book(book)
+    def  add_book(book)
         @books<< book       
     end
 
-    def  self.add_movie(movie)
+    def  add_music(movie)
         @movies<< movie        
     end
 
-    def  self.add_author(author)
+    def  add_author(author)
         @authors<< author        
     end
 end
