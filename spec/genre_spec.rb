@@ -12,7 +12,7 @@ describe Genre do
 
         it "Should return item1" do
             new_genre.add_item "item1"
-            expect(new_genre.items[0]).to be == "item1"
+            expect(new_genre.items[0]).to eql "item1"
         end
     end
 end
