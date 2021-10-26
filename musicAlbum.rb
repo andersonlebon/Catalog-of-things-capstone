@@ -12,6 +12,6 @@ class MusicAlbum < Item
 end
 
 
-al = MusicAlbum.new("2000-10-10", on_spotify: true)
+al = MusicAlbum.new("2020-10-10", on_spotify: true)
 
 puts al.can_be_archived?
