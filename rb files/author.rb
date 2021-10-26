@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 # Author object
-class Game < Item
-  attr_accessor :multiplayer, :last_played_at
+class Author
+  attr_accessor :id, :first_name, :last_name, :items
 
-  def initialize(id:, first_name:, last_name:, items:)
+  def initialize(id:, first_name:, last_name:)
     @id = id
     @first_name = first_name
     @last_name = last_name
