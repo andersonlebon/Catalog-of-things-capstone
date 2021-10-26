@@ -1,13 +1,13 @@
 require 'genre'
 
 class Creator
-    def self.create_genre(genre)
+    def self.genre
         print "Enter Name: "
         name = gets.chomp
         Genre.new(name)
     end  
 
-    def self.create_musicAl(music_al)
+    def self.musicAl
         print "Enter published_date in the format y/m/d: "
         published_date = gets.chomp
 
