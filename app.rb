@@ -12,7 +12,6 @@ class App
         @games = []
     end
 
-
     def  self.add_genre(genre)
         @genres<< genre        
     end

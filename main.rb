@@ -2,6 +2,8 @@
 
 require 'fileutils'
 require 'json'
+require './app'
+require "file_namager"
 
 
 def welcome
@@ -38,19 +40,17 @@ def options
 end
 
 def main
-  welcome
-  options
+    store = App.new
+    welcome
+    options
 end
 
 
 
-def CreateFile (file_name)
-    FileUtils.touch(file_name)
-end
 
 
-FileUtils.touch("caleb.json")
+# FileUtils.touch("caleb.json")
 # puts File.open("caleb.json")
-# main
-File.write("caleb.json", JSON.dump({books: ["hello"], authors: ["autors2"]}))
-puts JSON.parse(File.read("caleb.json")).class
+main
+# File.write("caleb.json", JSON.dump({books: ["hello"], authors: ["autors2"]}))
+# puts JSON.parse(File.read("caleb.json")).class
