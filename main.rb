@@ -54,7 +54,6 @@ def main
           genres.each {|genre| puts "[ #{genre["name"].upcase} ]"}
         when "10"
             store.add_music             
-            store.add_genre
 
         else
             return
