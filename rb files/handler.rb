@@ -163,7 +163,7 @@ class Handler
       end
     when '13'
       cr_a_author
-    when '14'
+    when '17'
       exit
     end
   end

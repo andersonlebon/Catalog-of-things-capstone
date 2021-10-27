@@ -28,7 +28,10 @@ def options(string, handler)
     '11.=> Add a movie',
     '12.=> Add a game',
     '13.=> Add a author',
-    '14.=> Exit'
+    '14. => Add a genre',
+    '15. => Add a label',
+    '16. => Add a source',
+    '17.=> Exit'
   ]
 
   puts('')
