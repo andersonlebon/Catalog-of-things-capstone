@@ -9,7 +9,7 @@ class Creator
     
 
     def self.genre
-        name = get_input("Enter Name: ")
+        name = get_input("Enter Name of genres: ")
         Genre.new(name)
     end  
 
