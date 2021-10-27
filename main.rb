@@ -55,6 +55,7 @@ def main
         when "10"
             store.add_music             
             store.add_genre
+
         else
             return
         end
