@@ -4,7 +4,7 @@
 
 require 'date'
 
-#Contain information shared in all items
+# Contain information shared in all items
 class Item
   attr_accessor :name, :genre, :author, :publish_date, :archived, :label
 

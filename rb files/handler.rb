@@ -5,6 +5,7 @@ require_relative 'game'
 require_relative 'author'
 require_relative 'filehandler'
 
+# Manipulate, save and load information of the program
 class Handler
   include FileHandler
   attr_accessor :games, :authors, :genres, :labels

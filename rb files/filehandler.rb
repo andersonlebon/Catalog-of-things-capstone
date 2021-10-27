@@ -2,7 +2,7 @@
 
 require_relative 'handler'
 
-#Have all the functions related to manipulate files
+# Have all the functions related to manipulate files
 module FileHandler
   def save_in_file(name, array)
     if array.length.positive?
