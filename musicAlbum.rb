@@ -1,4 +1,4 @@
-require './item'
+require './item_copy'
 
 class MusicAlbum < Item
     def initialize(publish_date, on_spotify)
