@@ -7,7 +7,7 @@ require_relative 'filehandler'
 
 class Handler
   include FileHandler
-  attr_accessor :games, :authors, :genres, :sources, :labels
+  attr_accessor :games, :authors, :genres, :labels
 
   def initialize
     @games = []
@@ -15,7 +15,6 @@ class Handler
     @albums = []
     @authors = []
     @genres = []
-    @sources = []
     @labels = []
   end
 
@@ -38,11 +37,8 @@ class Handler
       puts("insert the published day (in numbers, the max is #{max})")
       day = gets.chomp
     end
-    puts('please select an author of the list')
-    display_array(@authors)
-    pick = gets.chomp.to_i
-    author = @authors[pick]
     publish_date = "#{year}-#{month}-#{day}"
+    author = pick_one(@authors, "author")
     {
       'name' => name,
       'id' => id,
@@ -50,7 +46,6 @@ class Handler
       'author' => author,
       'label' => 'TBA',
       'genre' => 'TBA',
-      'source' => 'TBA'
     }
   end
 
@@ -101,6 +96,20 @@ class Handler
     'Author created succesfully'
   end
 
+  def go_back
+    puts('There should be atleast one author, label and genre')
+    Console.continue_story
+    'There should be atleast one author, label, and genre'
+  end
+
+  def enough_categorys
+    authors.length >= 1 # && genres.length >=1 && labels.length >=1
+  end
+
+  def display_array(array)
+    array.each(&:display)
+  end
+
   def listing(array, name)
     if array.length.positive?
       puts("this is the list of #{name}")
@@ -112,18 +121,11 @@ class Handler
     Console.continue_story
   end
 
-  def go_back
-    puts('There should be atleast one author, label, genre, and source')
-    Console.continue_story
-    'There should be atleast one author, label, genre, and source'
-  end
-
-  def enough_categorys
-    authors.length >= 1
-  end
-
-  def display_array(array)
-    array.each(&:display)
+  def pick_one(array, name)
+    puts("please select an #{name} of the list")
+    display_array(array)
+    pick = gets.chomp.to_i
+    picked = array[pick]
   end
 
   def days_in_month(year, month)
@@ -133,7 +135,6 @@ class Handler
   def exit
     save_in_file('authors', @authors)
     save_in_file('labels', @labels)
-    save_in_file('sources', @sources)
     save_in_file('genres', @genres)
     save_in_file('games', @games)
     'bye'

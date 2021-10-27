@@ -20,7 +20,6 @@ module FileHandler
       'publish_date' => line['publish_date'],
       'author' => @authors[line['author']],
       'label' => 'TBA',
-      'source' => 'TBA',
       'genre' => 'TBA'
     }
   end
