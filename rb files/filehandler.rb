@@ -9,7 +9,7 @@ module FileHandler
       array.each do |i|
         serial.push(i.to_json)
       end
-      File.write("#{name}.json", serial.join("\n"), mode: 'w')
+      File.write("jsons/#{name}.json", serial.join("\n"), mode: 'w')
     end
   end
 
@@ -31,7 +31,7 @@ module FileHandler
   end
 
   def open_file(file_name)
-    if File.exist?("#{file_name}.json")
+    if File.exist?("json/#{file_name}.json")
       File.open("#{file_name}.json", 'r') do |file|
         file.readlines.each do |line|
           insert(line, file_name)

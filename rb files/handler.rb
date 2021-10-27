@@ -11,6 +11,8 @@ class Handler
 
   def initialize
     @games = []
+    @books = []
+    @albums = []
     @authors = []
     @genres = []
     @sources = []
@@ -99,24 +101,13 @@ class Handler
     'Author created succesfully'
   end
 
-  def list_authors
-    if @authors.length.positive?
-      puts('this is the list of authors')
+  def listing(array, name)
+    if array.length.positive?
+      puts("this is the list of #{name}")
       puts('')
       display_array(@authors)
     else
-      puts('currently there are not authors created')
-    end
-    Console.continue_story
-  end
-
-  def list_games
-    if @games.length.positive?
-      puts('this is the list of games')
-      puts('')
-      display_array(@games)
-    else
-      puts('currently there are not games created')
+      puts("currently there are not #{name} created")
     end
     Console.continue_story
   end
@@ -151,19 +142,43 @@ class Handler
   def do(option)
     Console.clean
     case option
+    when '1'
+      listing(@books, 'books')
+    when '2'
+      listing(@albums, 'albums')
+    when '3'
+      listing(@games, 'games')
     when '4'
-      list_games
+      listing(@genres, 'genres')
+    when '5'
+      listing(@labels, 'labels')
+    when '6'
+      listing(@authors, 'authors')
     when '7'
-      list_authors
-    when '12'
+      if enough_categorys
+        # add the book creator function
+      else
+        go_back
+      end
+    when '8'
+      if enough_categorys
+        # add the album creator function
+      else
+        go_back
+      end
+    when '9'
       if enough_categorys
         cr_a_game
       else
         go_back
       end
-    when '13'
+    when '10'
       cr_a_author
-    when '17'
+    when '11'
+      # create a genre
+    when '12'
+      # create a label
+    when '13'
       exit
     end
   end

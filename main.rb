@@ -17,21 +17,17 @@ def options(string, handler)
   message = [
     '1.=> List all books',
     '2.=> List all music albums',
-    '3.=> List all movies',
-    '4.=> List of games',
-    '5.=> List all genres',
-    '6.=> List all labels',
-    '7.=> List all authors ',
-    '8.=> List all sources',
-    '9.=> Add a book',
-    '10.=> Add a music album',
-    '11.=> Add a movie',
-    '12.=> Add a game',
-    '13.=> Add a author',
-    '14. => Add a genre',
-    '15. => Add a label',
-    '16. => Add a source',
-    '17.=> Exit'
+    '3.=> List of games',
+    '4.=> List all genres',
+    '5.=> List all labels',
+    '6.=> List all authors ',
+    '7.=> Add a book',
+    '8.=> Add a music album',
+    '9.=> Add a game',
+    '10.=> Add a author',
+    '11. => Add a genre',
+    '12. => Add a label',
+    '13.=> Exit'
   ]
 
   puts('')
