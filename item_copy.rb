@@ -7,13 +7,13 @@ require 'date'
 class Item
   attr_accessor :name, :genre, :author, :publish_date, :archived, :label
 
-  def initialize(publish_date)
+  def initialize(name:, genre:, author:, source:, label: "No", publish_date:)
     @id = Random.rand(1..1000)
-    @name 
-    @genre 
-    @author 
-    @source 
-    @label 
+    @name = name
+    @genre = genre
+    @author = author
+    @source = source
+    @label = label
     @publish_date = Date.parse(publish_date)
     @archived = false
   end
