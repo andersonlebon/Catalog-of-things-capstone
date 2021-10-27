@@ -15,7 +15,7 @@ class Item
     @label = label
     @publish_date = Date.parse(publish_date)
     @archived = false
-
+    
     @author.add_item(self)
   end
 

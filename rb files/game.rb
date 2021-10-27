@@ -31,6 +31,6 @@ class Game < Item
   end
 
   def self.move_to_archive?
-    @archived = true if can_be_archived? && (Date.new.year - last_played_at.year > 2)
+    @archived = true if can_be_archived? && (Date.new.year - @last_played_at.year > 2)
   end
 end

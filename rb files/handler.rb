@@ -39,6 +39,8 @@ class Handler
     end
     publish_date = "#{year}-#{month}-#{day}"
     author = pick_one(@authors, "author")
+    # label = pick_one(@labels, "label")
+    # genre = pick_one(@genres, "genre")
     {
       'name' => name,
       'id' => id,
@@ -84,6 +86,19 @@ class Handler
     'game created succesfully'
   end
 
+  def cr_a_example
+    proto = cr_a_item(@array.length)
+    name = proto['name']
+    id = proto['id']
+    publish_date = proto['publish_date']
+    author = proto['author']
+    label = proto['label']
+    genre = proto['genre']
+
+    new_element = Element.new(name, genre, author, label, publish_date, id)
+    @array.push(new_element)
+  end
+
   def cr_a_author
     id = @authors.length
     puts('insert the first name of the author')
@@ -123,13 +138,12 @@ class Handler
 
   def pick_one(array, name)
     pick= -1;
-    while(pick <0 && pick >=array.length)
+    while(pick <0 || pick >=array.length)
       puts("please select an #{name} of the list")
       display_array(array)
       pick = gets.chomp.to_i
-      picked = array[pick]
     end
-    picked
+    return array[pick]
   end
 
   def days_in_month(year, month)
@@ -141,6 +155,8 @@ class Handler
     save_in_file('labels', @labels)
     save_in_file('genres', @genres)
     save_in_file('games', @games)
+    save_in_file('books', @books)
+    save_in_file('authors', @authors)
     'bye'
   end
 
