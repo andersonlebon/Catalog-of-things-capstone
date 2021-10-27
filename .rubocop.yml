@@ -1,4 +1,8 @@
+Layout/LineLength:
+  Enabled: false
 Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/ParameterLists:
   Enabled: false
 Style/GuardClause:
   Enabled: false

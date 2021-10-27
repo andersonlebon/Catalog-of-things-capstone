@@ -2,6 +2,7 @@
 
 require_relative 'handler'
 
+#Have all the functions related to manipulate files
 module FileHandler
   def save_in_file(name, array)
     if array.length.positive?
@@ -25,8 +26,12 @@ module FileHandler
   end
 
   def load_all
+    open_file('genres')
     open_file('authors')
+    open_file('labels')
     open_file('games')
+    open_file('books')
+    open_file('albums')
   end
 
   def open_file(file_name)
@@ -43,6 +48,7 @@ module FileHandler
 
   def insert(line, file_name)
     line = JSON.parse(line)
+    line = getproto(line)
     case file_name
     when 'authors'
       id = line['id']
@@ -51,10 +57,9 @@ module FileHandler
       new_author = Author.new(id, first_name, last_name)
       @authors.push(new_author)
     when 'games'
-      proto = getproto(line)
       last_played_at = line['last_played_at']
       multiplayer = line['multiplayer']
-      new_game = Game.new(proto, multiplayer, last_played_at)
+      new_game = Game.new(line, multiplayer, last_played_at)
       @games.push(new_game)
     end
   end

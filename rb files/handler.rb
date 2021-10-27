@@ -38,7 +38,7 @@ class Handler
       day = gets.chomp
     end
     publish_date = "#{year}-#{month}-#{day}"
-    author = pick_one(@authors, "author")
+    author = pick_one(@authors, 'author')
     # label = pick_one(@labels, "label")
     # genre = pick_one(@genres, "genre")
     {
@@ -47,7 +47,7 @@ class Handler
       'publish_date' => publish_date,
       'author' => author,
       'label' => 'TBA',
-      'genre' => 'TBA',
+      'genre' => 'TBA'
     }
   end
 
@@ -97,6 +97,7 @@ class Handler
 
     new_element = Element.new(name, genre, author, label, publish_date, id)
     @array.push(new_element)
+    'Element created Succesfully'
   end
 
   def cr_a_author
@@ -137,13 +138,13 @@ class Handler
   end
 
   def pick_one(array, name)
-    pick= -1;
-    while(pick <0 || pick >=array.length)
+    pick = -1
+    while pick.negative? || pick >= array.length
       puts("please select an #{name} of the list")
       display_array(array)
       pick = gets.chomp.to_i
     end
-    return array[pick]
+    array[pick]
   end
 
   def days_in_month(year, month)
