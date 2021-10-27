@@ -48,7 +48,6 @@ module FileHandler
 
   def insert(line, file_name)
     line = JSON.parse(line)
-    line = getproto(line)
     case file_name
     when 'authors'
       id = line['id']
@@ -57,6 +56,7 @@ module FileHandler
       new_author = Author.new(id, first_name, last_name)
       @authors.push(new_author)
     when 'games'
+      line = getproto(line)
       last_played_at = line['last_played_at']
       multiplayer = line['multiplayer']
       new_game = Game.new(line, multiplayer, last_played_at)

@@ -131,7 +131,7 @@ class Handler
     if array.length.positive?
       puts("this is the list of #{name} sorted by id")
       puts('')
-      display_array(@authors)
+      display_array(array)
     else
       puts("currently there are not #{name} created")
     end
@@ -140,11 +140,18 @@ class Handler
 
   def pick_one(array, name)
     pick = -1
-    while pick.negative? || pick >= array.length
+    while pick.negative? || pick > array.length - 1
+      Console.clean
       puts("please select an #{name} of the list")
       display_array(array)
+      puts("#{array.length}) create a new #{name}")
       pick = gets.chomp.to_i
+      if pick == array.length
+        create(name)
+        pick += 1
+      end
     end
+    Console.clean
     array[pick]
   end
 
@@ -160,6 +167,18 @@ class Handler
     save_in_file('books', @books)
     save_in_file('authors', @authors)
     'bye'
+  end
+
+  def create(option)
+    Console.clean
+    case option
+    when 'author'
+      cr_a_author
+    when 'genre'
+      # create a genre
+    when 'label'
+      # create a label
+    end
   end
 
   def do(option)
