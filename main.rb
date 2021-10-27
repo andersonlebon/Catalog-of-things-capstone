@@ -72,3 +72,36 @@ end
 main
 # File.write("caleb.json", JSON.dump({books: ["hello"], authors: ["autors2"]}))
 # puts JSON.parse(File.read("caleb.json")).class
+
+# class Try
+#   def initialize(name:)
+#     @name = name
+#     @date = 2020
+#   end
+# end
+
+# class Ican < Try
+#   attr_accessor :name, :date
+#   def initialize(name:)
+#     super(name:name,)
+    
+#   end
+#   def doyou
+#     "hello"
+#   end
+
+#   def say
+#     doyou+ "caleb"
+#   end
+# end
+
+# def get_input(mesage)
+#         print "    #{message}"
+#         gets
+# end
+
+# m = get_input("enter name")
+
+# puts ok
+
+# puts message
