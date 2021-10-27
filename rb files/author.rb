@@ -26,6 +26,6 @@ class Author
   end
 
   def display
-    puts("#{@id})  first name: #{@first_name} , last name: #{@last_name} id: #{@id}")
+    puts("#{@id})  first name: #{@first_name} , last name: #{@last_name}")
   end
 end

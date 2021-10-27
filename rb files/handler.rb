@@ -99,7 +99,7 @@ class Handler
   def go_back
     puts('There should be atleast one author, label and genre')
     Console.continue_story
-    'There should be atleast one author, label, and genre'
+    'There should be atleast one author, label and genre'
   end
 
   def enough_categorys
@@ -112,7 +112,7 @@ class Handler
 
   def listing(array, name)
     if array.length.positive?
-      puts("this is the list of #{name}")
+      puts("this is the list of #{name} sorted by id")
       puts('')
       display_array(@authors)
     else
@@ -122,10 +122,14 @@ class Handler
   end
 
   def pick_one(array, name)
-    puts("please select an #{name} of the list")
-    display_array(array)
-    pick = gets.chomp.to_i
-    picked = array[pick]
+    pick= -1;
+    while(pick <0 && pick >=array.length)
+      puts("please select an #{name} of the list")
+      display_array(array)
+      pick = gets.chomp.to_i
+      picked = array[pick]
+    end
+    picked
   end
 
   def days_in_month(year, month)
