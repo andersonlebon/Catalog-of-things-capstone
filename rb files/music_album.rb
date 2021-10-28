@@ -15,7 +15,7 @@ class MusicAlbum < Item
 
   def to_json 
       date = "#{@publish_date.year}-#{@publish_date.month}-#{@publish_date.day}"
-      hash = { id: @id, name: @name, genre: @genre.id, author: @author.id, published_date: date, on_spotify: @on_spotify}
+      hash = { id: @id, name: @name, genre: @genre.id, author: @author.id, publish_date: date, on_spotify: @on_spotify}
       JSON.generate(hash)
   end
 

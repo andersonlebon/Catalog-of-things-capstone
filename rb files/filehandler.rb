@@ -75,7 +75,9 @@ module FileHandler
       label = line['label']
       genre = line['genre']
       on_spotify = line['on_spotify']
-      MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
+      puts(publish_date)
+      new_album = MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
+      @albums.push(new_album)
     end
   end
 end
