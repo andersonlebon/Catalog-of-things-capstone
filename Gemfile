@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'pry', '~> 0.13.1'
-gem 'rubocop', '>= 1.0', '< 2.0'
+git_source(:github) { 'https://github.com/andersonlebon/Catalog-of-things-capstone' }
+
+# gem "rails"
+© 2021 GitHub, Inc.
+Terms
