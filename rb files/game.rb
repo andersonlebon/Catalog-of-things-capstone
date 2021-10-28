@@ -27,7 +27,7 @@ class Game < Item
   end
 
   def display
-    puts("#{@id})  name: #{@name} , genre: #{@genre}, author: #{@author.completename}, label: #{@label}, publish date: #{@publish_date}, last played: #{@last_played_at}")
+    puts("#{@id})  name: #{@name} , genre: #{@genre.name}, author: #{@author.completename}, label: #{@label}, publish date: #{@publish_date}, last played: #{@last_played_at}")
   end
 
   def self.move_to_archive?

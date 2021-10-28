@@ -61,6 +61,11 @@ module FileHandler
       multiplayer = line['multiplayer']
       new_game = Game.new(line, multiplayer, last_played_at)
       @games.push(new_game)
+    when 'genres'
+      id = line['id']
+      name = line['name']
+      new_genre = Genre.new(id, name)
+      @genres.push(new_genre)
     end
   end
 end

@@ -4,6 +4,8 @@ require_relative 'console'
 require_relative 'game'
 require_relative 'author'
 require_relative 'filehandler'
+require_relative 'genre'
+require_relative 'music_album'
 
 # Manipulate, save and load information of the program
 class Handler
@@ -41,14 +43,14 @@ class Handler
     publish_date = "#{year}-#{month}-#{day}"
     author = pick_one(@authors, 'author')
     # label = pick_one(@labels, "label")
-    # genre = pick_one(@genres, "genre")
+    genre = pick_one(@genres, "genre")
     {
       'name' => name,
       'id' => id,
       'publish_date' => publish_date,
       'author' => author,
       'label' => 'TBA',
-      'genre' => 'TBA'
+      'genre' => genre
     }
   end
 
@@ -99,6 +101,42 @@ class Handler
     new_element = Element.new(name, genre, author, label, publish_date, id)
     @array.push(new_element)
     'Element created Succesfully'
+  end
+
+  def cr_a_album
+    proto = cr_a_item(@albums.length)
+    name = proto['name']
+    id = proto['id']
+    publish_date = proto['publish_date']
+    author = proto['author']
+    label = proto['label']
+    genre = proto['genre']
+
+    on_spotify = 'agegraegr'
+    while on_spotify != 'Y' && on_spotify != 'N' && on_spotify != 'y' && on_spotify != 'n'
+      puts('invalid option, please select Y or N') if on_spotify != 'agegraegr'
+      puts('is on Spotify (Y/N)?: ')
+      on_spotify = gets.chomp
+    end
+    on_spotify = if %w[y Y].include?(on_spotify)
+                    true
+                  else
+                    false
+                  end
+
+    new_album = MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
+    @albums.push(new_album)
+    'Music Album created Succesfully'
+  end
+
+  def cr_a_genre()
+    id = @genres.length
+    puts("please insert the name of the genre")
+    name = gets.chomp
+
+    new_genre = Genre.new(id, name)
+    @genres.push(new_genre)
+    'Genre created Succesfully'
   end
 
   def cr_a_author
@@ -159,7 +197,7 @@ class Handler
     save_in_file('genres', @genres)
     save_in_file('games', @games)
     save_in_file('books', @books)
-    save_in_file('authors', @authors)
+    save_in_file('albums', @albums)
     'bye'
   end
 
@@ -169,7 +207,7 @@ class Handler
     when 'author'
       cr_a_author
     when 'genre'
-      # create a genre
+      cr_a_genre
     when 'label'
       # create a label
     end
@@ -193,13 +231,13 @@ class Handler
     when '7'
         # add the book creator function
     when '8'
-        # add the album creator function
+      cr_a_album
     when '9'
         cr_a_game
     when '10'
       cr_a_author
     when '11'
-      # create a genre
+      cr_a_genre
     when '12'
       # create a label
     when '13'
