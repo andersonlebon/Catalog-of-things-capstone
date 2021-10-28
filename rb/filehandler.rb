@@ -20,7 +20,7 @@ module FileHandler
       'id' => line['id'],
       'publish_date' => line['publish_date'],
       'author' => @authors[line['author']],
-      'label' => 'TBA',
+      'label' => @labels[line['label']],
       'genre' => @genres[line['genre']]
     }
   end
@@ -49,6 +49,12 @@ module FileHandler
   def insert(line, file_name)
     line = JSON.parse(line)
     case file_name
+    when 'labels'
+      id = line['id']
+      title = line['title']
+      color = line['color']
+      new_label = Label.new(id, title, color)
+      @labels.push(new_label)
     when 'authors'
       id = line['id']
       first_name = line['first_name']
@@ -61,10 +67,10 @@ module FileHandler
       new_genre = Genre.new(id, name)
       @genres.push(new_genre)
     when 'games'
-      line = getproto(line)
+      proto = getproto(line)
       last_played_at = line['last_played_at']
       multiplayer = line['multiplayer']
-      new_game = Game.new(line, multiplayer, last_played_at)
+      new_game = Game.new(proto, multiplayer, last_played_at)
       @games.push(new_game)
     when 'albums'
       line = getproto(line)
@@ -78,6 +84,12 @@ module FileHandler
       puts(publish_date)
       new_album = MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
       @albums.push(new_album)
+    when 'books'
+      proto = getproto(line)
+      publisher = line['publisher']
+      cover_state = line['cover_state']
+      new_book = Book.new(proto, publisher, cover_state)
+      @books.push(new_book)
     end
   end
 end

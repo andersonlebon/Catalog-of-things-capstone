@@ -6,6 +6,8 @@ require_relative 'author'
 require_relative 'filehandler'
 require_relative 'genre'
 require_relative 'music_album'
+require_relative 'label'
+require_relative 'book'
 
 # Manipulate, save and load information of the program
 class Handler
@@ -42,14 +44,14 @@ class Handler
     end
     publish_date = "#{year}-#{month}-#{day}"
     author = pick_one(@authors, 'author')
-    # label = pick_one(@labels, "label")
+    label = pick_one(@labels, "label")
     genre = pick_one(@genres, 'genre')
     {
       'name' => name,
       'id' => id,
       'publish_date' => publish_date,
       'author' => author,
-      'label' => 'TBA',
+      'label' => label,
       'genre' => genre
     }
   end
@@ -89,18 +91,38 @@ class Handler
     'game created succesfully'
   end
 
-  def cr_a_example
-    proto = cr_a_item(@array.length)
-    name = proto['name']
-    id = proto['id']
-    publish_date = proto['publish_date']
-    author = proto['author']
-    label = proto['label']
-    genre = proto['genre']
+  def cr_a_label
+    id = @labels.length
+    puts('please insert the title of the label')
+    title = gets.chomp
+    puts('please insert the color of the label')
+    color = gets.chomp
 
-    new_element = Element.new(name, genre, author, label, publish_date, id)
-    @array.push(new_element)
-    'Element created Succesfully'
+    new_label = Label.new(id, title, color)
+    @labels.push(new_label)
+    'Label created Succesfully'
+  end
+
+  def cr_a_book
+    proto = cr_a_item(@books.length)
+    puts('please insert the the publisher of the book')
+    publisher = gets.chomp
+
+    cover_state = 'agegraegr'
+    while cover_state != 'Y' && cover_state != 'N' && cover_state != 'y' && cover_state != 'n'
+      puts('invalid option, please select Y or N') if cover_state != 'agegraegr'
+      puts('is the cover in good state? (Y/N)?: ')
+      cover_state = gets.chomp
+    end
+    cover_state = if %w[y Y].include?(cover_state)
+                    'good'
+                  else
+                    'bad'
+                  end
+
+    new_book = Book.new(proto, publisher, cover_state)
+    @books.push(new_book)
+    'Book created Succesfully'
   end
 
   def cr_a_album
@@ -149,10 +171,6 @@ class Handler
     new_author = Author.new(id, first_name, last_name)
     @authors.push(new_author)
     'Author created succesfully'
-  end
-
-  def enough_categorys
-    authors.length >= 1 # && genres.length >=1 && labels.length >=1
   end
 
   def display_array(array)
@@ -209,7 +227,7 @@ class Handler
     when 'genre'
       cr_a_genre
     when 'label'
-      # create a label
+      cr_a_label
     end
   end
 
@@ -229,7 +247,7 @@ class Handler
     when '6'
       listing(@authors, 'authors')
     when '7'
-    # add the book creator function
+    cr_a_book
     when '8'
       cr_a_album
     when '9'
@@ -239,7 +257,7 @@ class Handler
     when '11'
       cr_a_genre
     when '12'
-      # create a label
+      cr_a_label
     when '13'
       exit
     end
