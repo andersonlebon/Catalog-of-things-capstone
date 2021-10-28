@@ -113,12 +113,6 @@ class Handler
     'Author created succesfully'
   end
 
-  def go_back
-    puts('There should be atleast one author, label and genre')
-    Console.continue_story
-    'There should be atleast one author, label and genre'
-  end
-
   def enough_categorys
     authors.length >= 1 # && genres.length >=1 && labels.length >=1
   end
@@ -197,23 +191,11 @@ class Handler
     when '6'
       listing(@authors, 'authors')
     when '7'
-      if enough_categorys
         # add the book creator function
-      else
-        go_back
-      end
     when '8'
-      if enough_categorys
         # add the album creator function
-      else
-        go_back
-      end
     when '9'
-      if enough_categorys
         cr_a_game
-      else
-        go_back
-      end
     when '10'
       cr_a_author
     when '11'
