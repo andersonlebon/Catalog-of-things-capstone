@@ -10,7 +10,7 @@ module FileHandler
       array.each do |i|
         serial.push(i.to_json)
       end
-      Dir.mkdir("json") unless File.exists?("json")
+      Dir.mkdir('json') unless File.exist?('json')
       File.write("json/#{name}.json", serial.join("\n"), mode: 'w')
     end
   end
