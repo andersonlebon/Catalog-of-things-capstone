@@ -22,6 +22,5 @@ describe MusicAlbum do
     it 'Should Return true' do
       expect(new_music_album.can_be_archived?).to be false
     end
-    
   end
 end
