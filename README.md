@@ -12,7 +12,7 @@ This project is a console app that will help you to keep a record of different t
 ---
 
 - Ruby  🤍
-- rspec `specs\solver_spec.rb` 🤍
+- rspec 🤍
 
 ---
 
