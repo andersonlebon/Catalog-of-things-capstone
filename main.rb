@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'rb files/handler'
-require_relative 'rb files/console'
+require_relative 'rb/handler'
+require_relative 'rb/console'
 
 def decorate(message)
   puts '=' * (message.length + 4)

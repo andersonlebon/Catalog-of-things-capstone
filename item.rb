@@ -17,7 +17,6 @@ class Item
     @publish_date = Date.parse(publish_date)
     @archived = false
 
-    @author.add_item(self)
   end
 
   # in the Item class should return true if published_date is older than 10 years
