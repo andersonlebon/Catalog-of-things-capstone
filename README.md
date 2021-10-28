@@ -55,7 +55,7 @@ The add function will start prompting you for data, follow the instructions gave
 
 #### Exit
 
-The Exit option will end the program, and save all the information in JSON files if a folder name "json" in the same folder as main.rb/the executable, after that the program will load the information when open again
+The Exit option will end the program, and save all the information in JSON files in a a folder named "json" (if dont exist will be created) in the same folder as main.rb/the executable, after that the program will load the information when open again
 
 ### Video Demostration
 
