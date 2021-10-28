@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class to create label objects
 class Label
   attr_reader :id, :items
   attr_accessor :title, :color
