@@ -43,7 +43,7 @@ class Handler
     publish_date = "#{year}-#{month}-#{day}"
     author = pick_one(@authors, 'author')
     # label = pick_one(@labels, "label")
-    genre = pick_one(@genres, "genre")
+    genre = pick_one(@genres, 'genre')
     {
       'name' => name,
       'id' => id,
@@ -119,19 +119,19 @@ class Handler
       on_spotify = gets.chomp
     end
     on_spotify = if %w[y Y].include?(on_spotify)
-                    true
-                  else
-                    false
-                  end
+                   true
+                 else
+                   false
+                 end
 
     new_album = MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
     @albums.push(new_album)
     'Music Album created Succesfully'
   end
 
-  def cr_a_genre()
+  def cr_a_genre
     id = @genres.length
-    puts("please insert the name of the genre")
+    puts('please insert the name of the genre')
     name = gets.chomp
 
     new_genre = Genre.new(id, name)
@@ -229,11 +229,11 @@ class Handler
     when '6'
       listing(@authors, 'authors')
     when '7'
-        # add the book creator function
+    # add the book creator function
     when '8'
       cr_a_album
     when '9'
-        cr_a_game
+      cr_a_game
     when '10'
       cr_a_author
     when '11'
