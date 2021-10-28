@@ -21,7 +21,7 @@ class Game < Item
   end
 
   def to_json(*_args)
-    hash = { name: @name, genre: @genre, author: @author.id, label: @label, publish_date: @publish_date,
+    hash = { name: @name, genre: @genre.id, author: @author.id, label: @label, publish_date: @publish_date,
              id: @id, multiplayer: @multiplayer, last_played_at: @last_played_at }
     JSON.generate(hash)
   end

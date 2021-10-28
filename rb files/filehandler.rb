@@ -21,7 +21,7 @@ module FileHandler
       'publish_date' => line['publish_date'],
       'author' => @authors[line['author']],
       'label' => 'TBA',
-      'genre' => 'TBA'
+      'genre' => @genres[line['genre']]
     }
   end
 
@@ -55,17 +55,27 @@ module FileHandler
       last_name = line['last_name']
       new_author = Author.new(id, first_name, last_name)
       @authors.push(new_author)
+    when 'genres'
+      id = line['id']
+      name = line['name']
+      new_genre = Genre.new(id, name)
+      @genres.push(new_genre)
     when 'games'
       line = getproto(line)
       last_played_at = line['last_played_at']
       multiplayer = line['multiplayer']
       new_game = Game.new(line, multiplayer, last_played_at)
       @games.push(new_game)
-    when 'genres'
-      id = line['id']
+    when 'albums'
+      line = getproto(line)
       name = line['name']
-      new_genre = Genre.new(id, name)
-      @genres.push(new_genre)
+      id = line['id']
+      publish_date = line['publish_date']
+      author = line['author']
+      label = line['label']
+      genre = line['genre']
+      on_spotify = line['on_spotify']
+      MusicAlbum.new(name, genre, author, label, publish_date, on_spotify, id)
     end
   end
 end
