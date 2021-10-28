@@ -1,5 +1,7 @@
 Layout/LineLength:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
 Metrics/ParameterLists:

@@ -12,7 +12,7 @@ This project is a console app that will help you to keep a record of different t
 ---
 
 - Ruby  🤍
-- rspec `specs\solver_spec.rb` 🤍
+- rspec 🤍
 
 ---
 
@@ -37,9 +37,6 @@ To get the content of this project locally you need to run this command on your 
 - Make sure you have Ruby IRB installed on your computer
 - Clone or download this repo on your machine
 - Enter project directory
-
-<<<<<<< Updated upstream
-=======
 ### How to use
 
 To run the program you have two options, run the source code using ruby over the main.rb script or use the windows executable
@@ -64,7 +61,6 @@ The Exit option will end the program, and save all the information in JSON files
 
 You can see a video demostration avalible [here](https://drive.google.com/file/d/1HpaRXMByKtLTHzjnKp6-Hih0dOspKS6s/view?usp=sharing)
 
->>>>>>> Stashed changes
 ## 🤍 Authors:
 
 👤 **Carlos Arturo Ortegega Guanipa**
@@ -104,4 +100,3 @@ Give a `⭐️` if you like this project!
 Hat tip to anyone whose code was used:
 - Microverse's guidelines
 - Inspiration
-

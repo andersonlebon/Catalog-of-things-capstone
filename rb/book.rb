@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative '../item'
 
+# Class to create book objects
 class Book < Item
   attr_accessor :publisher, :cover_state
 
@@ -18,8 +21,8 @@ class Book < Item
 
   def to_json(*_args)
     hash = { name: @name, genre: @genre.id, author: @author.id, label: @label.id, publish_date: @publish_date,
-      id: @id, publisher: @publisher, cover_state: @cover_state }
-JSON.generate(hash)
+             id: @id, publisher: @publisher, cover_state: @cover_state }
+    JSON.generate(hash)
   end
 
   def display

@@ -17,7 +17,7 @@ class Game < Item
 
     super(name, genre, author, label, publish_date, id)
     @multiplayer = multiplayer
-    @last_played_at =  Date.parse(last_played_at)
+    @last_played_at = Date.parse(last_played_at)
   end
 
   def to_json(*_args)

@@ -44,7 +44,7 @@ class Handler
     end
     publish_date = "#{year}-#{month}-#{day}"
     author = pick_one(@authors, 'author')
-    label = pick_one(@labels, "label")
+    label = pick_one(@labels, 'label')
     genre = pick_one(@genres, 'genre')
     {
       'name' => name,
@@ -247,7 +247,7 @@ class Handler
     when '6'
       listing(@authors, 'authors')
     when '7'
-    cr_a_book
+      cr_a_book
     when '8'
       cr_a_album
     when '9'
