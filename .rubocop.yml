@@ -1,6 +1,12 @@
+Layout/LineLength:
+  Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
+Metrics/ParameterLists:
+  Enabled: false
 Style/GuardClause:
+  Enabled: false
+Metrics/ClassLength:
   Enabled: false
 Metrics/MethodLength:
   Max: 41

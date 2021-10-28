@@ -1,16 +1,7 @@
 # frozen_string_literal: true
 
-require 'fileutils'
-require 'json'
-require './app'
-require "./file_manager"
-
-
-def welcome
-  puts "\n\n"
-  puts decorate('WELCOME TO CATALOG APP')
-  puts decorate('Please select one of the options bellow')
-end
+require_relative 'rb/handler'
+require_relative 'rb/console'
 
 def decorate(message)
   puts '=' * (message.length + 4)
@@ -20,88 +11,37 @@ def decorate(message)
   puts '=' * (message.length + 4)
 end
 
-def options
+def options(string, handler)
+  Console.clean
+  puts(string)
   message = [
-    '1.=> List all books',
-    '2.=> List all music albums',
-    '3.=> List all movies',
-    '4.=> List of games',
-    '5.=> List all genres',
-    '6.=> List all labels',
-    '7.=> List all authors ',
-    '8.=> List all sources',
-    '9.=> Add a book',
-    '10.=> Add a music album',
-    '11.=> Add a movie',
-    '12.=> Add a game'
+    '1.  => List all books',
+    '2.  => List all music albums',
+    '3.  => List of games',
+    '4.  => List all genres',
+    '5.  => List all labels',
+    '6.  => List all authors ',
+    '7.  => Add a book',
+    '8.  => Add a music album',
+    '9.  => Add a game',
+    '10. => Add a author',
+    '11. => Add a genre',
+    '12. => Add a label',
+    '13. => Exit'
   ]
 
+  puts('')
   puts message
+  puts('')
+  entry = gets.chomp
+  handler.do(entry)
 end
 
 def main
-    createFiles(["genres", "musicAlbum"])
-    welcome
-    options
-    store = App.new
-    loop do
-        case gets.chomp
-        when "2"
-            musicAlbums = read_file("musicAlbum")
-            musicAlbums.each {|album| puts "Published_date: #{album["published_date"]}" }
-        when "5"
-          genres = read_file("genres")
-          genres.each {|genre| puts "[ #{genre["name"].upcase} ]"}
-        when "10"
-            store.add_music             
-            store.add_genre
-        else
-            return
-        end
-    end
-    
-  
+  string = 'WELCOME TO CATALOG APP'
+  handler = Handler.new
+  handler.load_all
+  string = options(string, handler) while string != 'bye'
 end
 
-
-
-
-
-# FileUtils.touch("caleb.json")
-# puts File.open("caleb.json")
 main
-# File.write("caleb.json", JSON.dump({books: ["hello"], authors: ["autors2"]}))
-# puts JSON.parse(File.read("caleb.json")).class
-
-# class Try
-#   def initialize(name:)
-#     @name = name
-#     @date = 2020
-#   end
-# end
-
-# class Ican < Try
-#   attr_accessor :name, :date
-#   def initialize(name:)
-#     super(name:name,)
-    
-#   end
-#   def doyou
-#     "hello"
-#   end
-
-#   def say
-#     doyou+ "caleb"
-#   end
-# end
-
-# def get_input(mesage)
-#         print "    #{message}"
-#         gets
-# end
-
-# m = get_input("enter name")
-
-# puts ok
-
-# puts message
