@@ -74,7 +74,7 @@ You can see a video demostration avalible [here](https://drive.google.com/file/d
 - Twitter: [@BuyananaCaleb](https://twitter.com/BuyananaCaleb)
 - LinkedIn: [Anderson Caleb](https://www.linkedin.com/in/anderson-caleb-915343209/)
 
-👤 **Sheyla Pozo** 🤍
+👤 **Sheyla Pozo**
 
 
 - Github:[@githubhandle](https://github.com/sheylaPozo)
